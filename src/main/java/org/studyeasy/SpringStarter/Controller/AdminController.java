@@ -9,12 +9,12 @@ public class AdminController {
     
     @GetMapping("/admin")
     public String admin(Model model){
-        return "admin";
+        return "authority-view/admin";
     }
 
     @GetMapping("/test")
     public String test(Model model){
-        return "test";
+        return "authority-view/test";
     }
  
     

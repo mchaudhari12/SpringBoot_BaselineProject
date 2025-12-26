@@ -19,24 +19,24 @@ public class AccountController {
     @PostMapping("/register")
     public String register_user(@ModelAttribute Account account){
         accountService.save(account);
-        return "redirect:/";
+        return "account-view/redirect:/";
     }
 
    @GetMapping("/register")
    public String register(Model model){
         Account account = new Account();
         model.addAttribute("account", account);
-        return "register";
+        return "account-view/register";
    } 
 
    @GetMapping("/login")
    public String login(Model model){
-       return "login";
+       return "account-view/login";
    }
    
    @GetMapping("/profile")
    public String profile(Model model){
-       return "profile";
+       return "account-view/profile";
    }
 
 
