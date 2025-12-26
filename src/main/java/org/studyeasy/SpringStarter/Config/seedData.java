@@ -1,5 +1,6 @@
 package org.studyeasy.SpringStarter.Config;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -48,6 +49,9 @@ public class seedData implements CommandLineRunner{
              account01.setPassword("Manish@4511");
              account01.setFirstName("manish");
              account01.setLastName("chaudhari");
+             account01.setAge(25);
+             account01.setDate_of_birth(LocalDate.parse("1990-01-01"));
+             account01.setGender("Male");
      
      
              account02.setEmail("account02@gamil.com");
@@ -55,18 +59,28 @@ public class seedData implements CommandLineRunner{
              account02.setFirstName("Akshay");
              account02.setLastName("Pathak");
              account02.setRole(Roles.ADMIN.getRole());
+             account02.setAge(25);
+             account02.setDate_of_birth(LocalDate.parse("1990-01-01"));
+             account02.setGender("Female");
      
              account03.setEmail("account03@gamil.com"); 
              account03.setPassword("password03");
              account03.setFirstName("Pratik");
              account03.setLastName("Wadile");
              account03.setRole(Roles.EDITOR.getRole());
+             account03.setAge(55);
+             account03.setDate_of_birth(LocalDate.parse("1975-01-01"));
+             account03.setGender("Male");
      
              account04.setEmail("account04@gamil.com"); 
              account04.setPassword("password04");
              account04.setFirstName("Vishal");
              account04.setLastName("Patil");
              account04.setRole(Roles.EDITOR.getRole());
+             account04.setAge(40);
+             account04.setDate_of_birth(LocalDate.parse("1980-01-01"));
+             account04.setGender("Female");
+
              Set<Authority> authorities = new HashSet<>();
              authorityService.findById(Privillages.ACCESS_ADMIN_PANEL.getId()).ifPresent(authorities::add);
              authorityService.findById(Privillages.RESET_ANY_USER_PASSWORD.getId()).ifPresent(authorities::add);
@@ -83,8 +97,13 @@ public class seedData implements CommandLineRunner{
         if(posts.size() == 0){
 
             Post post01 = new Post();
-            post01.setName("Post 01");
-            post01.setBody("Post 01 Body....");
+            post01.setName("About Git");
+            post01.setBody("""
+               Git (/ɡɪt/)[8] is a distributed version control system: tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development. Its goals include speed, data integrity, and support for distributed, non-linear workflows (thousands of parallel branches running on different systems).[9][10][11]
+
+               Git was originally authored by Linus Torvalds in 2005 for development of the Linux kernel, with other kernel developers contributing to its initial development.[12] Since 2005, Junio Hamano has been the core maintainer. As with most other distributed version control systems, and unlike most client–server systems, every Git directory on every computer is a full-fledged repository with complete history and full version-tracking abilities, independent of network access or a central server.[13] Git is free and open-source software distributed under the GPL-2.0-only license.   
+            
+            """);
             post01.setAccount(account01);
             postservice.save(post01);
 
