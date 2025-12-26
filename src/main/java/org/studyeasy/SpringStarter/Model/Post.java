@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,9 +26,11 @@ public class Post {
     @GeneratedValue
     private Long Id;
 
+    @NotBlank(message = "Post Title is Required")
     private String name;
 
     @Column(columnDefinition = "TEXT")
+    @NotBlank(message = "Post Body is Required")
     private String body;
     
     @Column(name = "created_at")
