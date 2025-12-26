@@ -112,6 +112,7 @@ public class PostController {
     @GetMapping("/post/{id}/delete")
     @PreAuthorize("isAuthenticated()")
     public String deletePost(@PathVariable Long id){
+        
 
         Optional<Post> optionalPost = postservice.getById(id);
         if(optionalPost.isPresent()){
