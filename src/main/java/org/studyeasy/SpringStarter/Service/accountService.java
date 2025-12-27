@@ -28,6 +28,9 @@ public class accountService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    // @Value("${spring.mvc.static-path-pattern}")
+    // private String photo_prefix;
+
     public Account save(Account account){
         // Hash the password before saving to ensure security
         account.setPassword(passwordEncoder.encode(account.getPassword()));
@@ -35,7 +38,7 @@ public class accountService implements UserDetailsService {
           account.setRole(Roles.USER.getRole());
         }
         if(account.getPhoto() == null){
-            String path = "images/images.jpg";
+            String path = "/images/IMG_0061.JPG";
             account.setPhoto(path);
         }
         return accountrepository.save(account);
@@ -63,6 +66,10 @@ public class accountService implements UserDetailsService {
 
     public Optional<Account> findOneByEmail(String email) {
       return accountrepository.findOneByEmailIgnoreCase(email);     
+    }
+
+    public Optional<Account> findById(Long id){
+        return accountrepository.findById(id);
     }
 
 }
