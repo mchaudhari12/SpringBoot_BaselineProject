@@ -1,10 +1,12 @@
 package org.studyeasy.SpringStarter.Model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -64,6 +66,11 @@ public class Account {
 
     @OneToMany(mappedBy = "account")
     private List<Post> posts;
+
+    @Column(name = "token")
+    private String token;
+
+    private LocalDateTime password_reset_token_expiry;
 
     @ManyToMany
     @JoinTable(
