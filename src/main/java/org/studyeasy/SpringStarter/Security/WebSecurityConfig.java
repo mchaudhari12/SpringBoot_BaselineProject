@@ -14,46 +14,49 @@ import org.studyeasy.SpringStarter.util.Constant.Privillages;
 public class WebSecurityConfig {
 
     private static final String[] WHITELIST = {
-        "/",
-        "/register",
-        "/css/**",
-        "/fonts/**",
-        "/images/**",
-        "/js/**"
+            "/",
+            "/register",
+            "/css/**",
+            "/fonts/**",
+            "/images/**",
+            "/js/**"
     };
 
-    //Password Encoder Bean Defination
+    // Password Encoder Bean Defination
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
+
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
-        .authorizeRequests()
-        .antMatchers(WHITELIST)
-        .permitAll()
-        .antMatchers("/profile/**").authenticated()
-        .antMatchers("/admin/**").hasRole("ADMIN")
-        .antMatchers("/editor/**").hasAnyRole("ADMIN","EDITOR")
-        .antMatchers("/test/**").hasAuthority(Privillages.ACCESS_ADMIN_PANEL.getPrivillage())
-        .and()
-        .formLogin()
-        .loginPage("/login")
-        .loginProcessingUrl("/login")
-        .usernameParameter("email")
-        .passwordParameter("password")
-        .defaultSuccessUrl("/", true)
-        .failureUrl("/login?error")
-        .permitAll()
-        .and()
-        .logout()
-        .logoutSuccessUrl("/")
-        .permitAll();
+                .authorizeRequests()
+                .antMatchers(WHITELIST)
+                .permitAll()
+                .antMatchers("/profile/**").authenticated()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/editor/**").hasAnyRole("ADMIN", "EDITOR")
+                .antMatchers("/test/**").hasAuthority(Privillages.ACCESS_ADMIN_PANEL.getPrivillage())
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/login")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/", true)
+                .failureUrl("/login?error")
+                .permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/")
+                .permitAll()
+                .and()
+                .rememberMe().rememberMeParameter("remember-me")
+                .and()
+                .httpBasic();
 
-
-           return http.build(); 
+        return http.build();
     }
 }

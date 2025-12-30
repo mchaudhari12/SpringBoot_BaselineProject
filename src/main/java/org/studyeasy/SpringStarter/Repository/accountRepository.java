@@ -10,5 +10,7 @@ import org.studyeasy.SpringStarter.Model.Account;
 public interface accountRepository extends JpaRepository<Account, Long> {
 
     Optional<Account> findOneByEmailIgnoreCase(String email);
+
+    Optional<Account> findByToken(String token);
   
 }
