@@ -10,8 +10,6 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-import javax.validation.Valid;
-
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,6 +30,8 @@ import org.studyeasy.SpringStarter.Service.EmailService;
 import org.studyeasy.SpringStarter.Service.accountService;
 import org.studyeasy.SpringStarter.util.Constant.AppUtils;
 import org.studyeasy.SpringStarter.util.Email.EmailDetails;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class AccountController {

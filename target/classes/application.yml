@@ -8,6 +8,6 @@ spring:
     password: Akshay@1995
     driver-class-name : com.mysql.cj.jdbc.Driver
   jpa:
-    show-sql: true
+    #show-sql: true
     hibernate:
       ddl-auto: create-drop 

@@ -3,8 +3,6 @@ package org.studyeasy.SpringStarter.Controller;
 import java.security.Principal;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -18,6 +16,8 @@ import org.studyeasy.SpringStarter.Model.Account;
 import org.studyeasy.SpringStarter.Model.Post;
 import org.studyeasy.SpringStarter.Service.accountService;
 import org.studyeasy.SpringStarter.Service.postService;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class PostController {
