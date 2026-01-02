@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="/fragments/head :: head">
+<head th:replace="~{/fragments/head :: head}">
+
 
 <body class="sub_page">
 
@@ -9,7 +10,7 @@
     <div class="bg-box">
       <img src="/images/images.jpg" alt="">
     </div>
-    <header th:replace="/fragments/header :: header">
+    <header th:replace="~{/fragments/header :: header}">
   </div>
 
   <!-- about section -->
@@ -21,19 +22,38 @@
         <h5 th:text="'Author: '+ ${post.account.firstName} + 
             ' | Created at: '+${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')} +
             ' | Updated at: '+${#temporals.format(post.updatedAt, 'yyyy-MM-dd HH:mm')}"></h5>
-        <p th:utext="${post.body}">body</p>
-        <hr color="grey" />
+            
+            <div class="post-content">
+              <div class="post-body" th:utext="${post.body}">body</div>
+            
+              <span class="read-more" onclick="toggleReadMore(this)">
+                Read more
+              </span>
+            </div>
+
+            <script>
+               function toggleReadMore(el) {
+               const body = el.closest(".post-content").querySelector(".post-body");
+
+               body.classList.toggle("expanded");
+
+               el.textContent = body.classList.contains("expanded")
+               ? "Read less"
+              : "Read more";
+             }
+              </script>
+          
+            <hr color="grey" />
         <div class="align-right" sec:authorize="isAuthenticated()" th:if=" ${isOwner}">
           <a th:href="@{'/post/' + ${post.id} + '/edit'}" class="btn btn-secondary btn-lg active" role="button"
             aria-pressed="true">Edit</a> |
          <a id="delete" th:href="@{'/posts/' + ${post.id} + '/delete'}" class="btn btn-danger btn-lg active"
             role="button" aria-pressed="true">Delete</a>
         </div>
-
       </div>
     </div>
   </section>
-  <footer th:replace="/fragments/footer :: footer">
+  <footer th:replace="~{/fragments/footer :: footer}">
 </body>
 
 </html>
