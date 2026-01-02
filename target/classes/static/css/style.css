@@ -1004,4 +1004,55 @@ a:focus {
 .footer_section .footer-info p a {
   color: inherit;
 }
+
+/* =========================
+   Post details page styles
+   ========================= */
+
+   .post {
+    background: #ffffff;
+    color: #000000;
+    padding: 25px;
+    border-radius: 10px;
+  }
+  
+  .post h3 a {
+    color: #222831;
+    font-weight: 600;
+  }
+  
+  .post h5 {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  /* Post body content */
+  .post-body {
+    max-height: 4.5em;       /* show ~3 lines */
+    overflow: hidden;
+    line-height: 1.5em;
+    transition: max-height 0.4s ease;
+  }
+  
+  /* Expanded state */
+  .post-body.expanded {
+    max-height: 1000px;      /* enough to show full content */
+  }
+  
+  /* Read more link */
+  .read-more {
+    color: #ffbe33;
+    cursor: pointer;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+  .read-more:hover {
+    text-decoration: underline;
+  }
+
+
+  
 /*# sourceMappingURL=style.css.map */

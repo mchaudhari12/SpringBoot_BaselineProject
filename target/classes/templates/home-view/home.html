@@ -62,7 +62,20 @@
         <h5 th:text="'Author: '+ ${post.account.firstName} + 
         ' | Created at: '+${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')} +
         ' | Updated at: '+${#temporals.format(post.updatedAt, 'yyyy-MM-dd HH:mm')}"></h5>
-        <p th:utext="${post.body}">body</p>
+        <p class="post-body" th:utext="${post.body}">body</p>
+        <span class="read-more" onclick="toggleReadMore(this)">
+          Read more
+        </span>
+      
+        <script>
+          function toggleReadMore(el) {
+            const body = el.previousElementSibling;
+            body.classList.toggle("expanded");
+            el.textContent = body.classList.contains("expanded")
+              ? "Read less"
+              : "Read more";
+          }
+        </script>
         <hr color="grey"/>
       </div>
     </div>
