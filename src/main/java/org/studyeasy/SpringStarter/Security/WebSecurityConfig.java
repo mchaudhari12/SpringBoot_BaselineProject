@@ -23,7 +23,9 @@ public class WebSecurityConfig {
         "/images/**",
         "/js/**",
         "/upload/**",
-        "/post/**"
+        "/post/**",
+        "/forgot-password"
+        
     };
 
     // Password Encoder Bean Defination
