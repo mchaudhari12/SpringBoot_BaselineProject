@@ -24,7 +24,9 @@ public class WebSecurityConfig {
         "/js/**",
         "/upload/**",
         "/post/**",
-        "/forgot-password"
+        "/forgot-password",
+        "/reset-password",
+        "/change-password"
         
     };
 
